@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Bankomat} from "./components/bankomat/Bankomat";
-import {Button} from "./components/bankomat/Button";
 import {Counter} from "./components/count/Counter";
-import {TopCars} from "./components/topCars/TopCars";
 
 
 export type MoneyType = {
