@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './App.css';
-import {TopCars} from "./components/topCars/TopCars";
 import {Bankomat} from "./components/bankomat/Bankomat";
 
 
