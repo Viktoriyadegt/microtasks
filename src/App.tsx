@@ -89,7 +89,19 @@ function App() {
                 {/* <Bankomat filteredMoney={filteredMoney} filterValue={filterValue}/>*/}
                 {/*<Counter count={count} reset={reset} increment={increment}/>*/}
 
-                <FullInput messages={messages} addMessage = {addMessage}/>
+                <FullInput addMessage={addMessage}/>
+
+                <ul>
+                    {messages.map(message => {
+                        return (
+                            <li key={message.id}>
+                                <span>{message.message}</span>
+                            </li>
+                        )
+                    })}
+
+                </ul>
+
 
             </div>
         </div>

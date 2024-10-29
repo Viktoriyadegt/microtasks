@@ -1,8 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
-import {MessageType} from "../../App";
 
 type FullInputProps = {
-    messages: MessageType[]
     addMessage: (message: string) => void
 }
 
@@ -25,17 +23,6 @@ export const FullInput = (props: FullInputProps) => {
         <div>
             <input type="text" value={message} onChange={onChangeInputHandler}/>
             <button onClick={onClickHandler}>+</button>
-
-            <ul>
-                {props.messages.map(message => {
-                    return (
-                        <li key={message.id}>
-                            <span>{message.message}</span>
-                        </li>
-                    )
-                })}
-
-            </ul>
 
         </div>
     );
