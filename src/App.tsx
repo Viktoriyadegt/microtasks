@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Counter} from "./components/count/Counter";
+import {FullInput} from "./components/input/FullInput";
 
 
-export type MoneyType = {
-    banknots: string,
-    value: number,
-    number: string
+
+ export type MoneyType = {
+     banknots: string,
+     value: number,
+     number: string
+ }
+
+ export type FilterValueType = 'all' | 'rubles' | 'dollars'
+
+export type MessageType = {
+    id: number
+    message: string
 }
-
-export type FilterValueType = 'all' | 'rubles' | 'dollars'
 
 
 function App() {
@@ -48,25 +54,43 @@ function App() {
             }
     */
 
-       let [count, setCount] = useState<number>(0);
+       // let [count, setCount] = useState<number>(0);
+       //
+       // const increment = () => {
+       //     console.log(count)
+       //     setCount(++count)
+       // }
+       //
+       // const reset = () => {
+       //     console.log(count)
+       //     setCount(0)
+       // }
 
-       const increment = () => {
-           console.log(count)
-           setCount(++count)
-       }
 
-       const reset = () => {
-           console.log(count)
-           setCount(0)
-       }
+
+    let [messages,setMessages] = useState<MessageType[]>([
+         {id: 1, message: 'message1'},
+         {id: 2, message: 'message2'},
+         {id: 3, message: 'message3'},
+     ])
+
+    const addMessage = (message: string) => {
+        setMessages( [{id: 4, message}, ...messages])
+    }
 
 
     return (
-        <div style={{margin: '20px'}}>
-            <div style={{fontSize: '30px', textAlign: 'center'}}>
+
+        <div >
+       {/* <div style={{margin: '20px'}}>*/}
+            {/*<div style={{fontSize: '30px', textAlign: 'center'}}>*/}
+            <div style={{fontSize: '30px'}}>
                 {/*<TopCars cars={topCars}/>*/}
                 {/* <Bankomat filteredMoney={filteredMoney} filterValue={filterValue}/>*/}
-                <Counter count={count} reset={reset} increment={increment}/>
+                {/*<Counter count={count} reset={reset} increment={increment}/>*/}
+
+                <FullInput messages={messages} addMessage = {addMessage}/>
+
             </div>
         </div>
     );
