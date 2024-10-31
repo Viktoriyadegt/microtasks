@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import './App.css';
 import {FullInput} from "./components/input/FullInput";
+import {Input} from './components/input/Input';
+import {Bankomat} from "./components/bankomat/Bankomat";
+import {Button} from "./components/input/Button";
 
 
+export type MoneyType = {
+    banknots: string,
+    value: number,
+    number: string
+}
 
- export type MoneyType = {
-     banknots: string,
-     value: number,
-     number: string
- }
-
- export type FilterValueType = 'all' | 'rubles' | 'dollars'
+export type FilterValueType = 'all' | 'rubles' | 'dollars'
 
 export type MessageType = {
     id: number
@@ -54,42 +56,52 @@ function App() {
             }
     */
 
-       // let [count, setCount] = useState<number>(0);
-       //
-       // const increment = () => {
-       //     console.log(count)
-       //     setCount(++count)
-       // }
-       //
-       // const reset = () => {
-       //     console.log(count)
-       //     setCount(0)
-       // }
+    // let [count, setCount] = useState<number>(0);
+    //
+    // const increment = () => {
+    //     console.log(count)
+    //     setCount(++count)
+    // }
+    //
+    // const reset = () => {
+    //     console.log(count)
+    //     setCount(0)
+    // }
+
+
+    let [messages, setMessages] = useState<MessageType[]>([
+        {id: 1, message: 'message1'},
+        {id: 2, message: 'message2'},
+        {id: 3, message: 'message3'},
+    ])
 
 
 
-    let [messages,setMessages] = useState<MessageType[]>([
-         {id: 1, message: 'message1'},
-         {id: 2, message: 'message2'},
-         {id: 3, message: 'message3'},
-     ])
+    let [title, setTitle] = useState('')
 
-    const addMessage = (message: string) => {
-        setMessages( [{id: 4, message}, ...messages])
+    const onClickHandler = () => {
+        setMessages([{id: 4, message: title}, ...messages])
+        setTitle('')
     }
+
+
+
 
 
     return (
 
-        <div >
-       {/* <div style={{margin: '20px'}}>*/}
+        <div>
+            {/* <div style={{margin: '20px'}}>*/}
             {/*<div style={{fontSize: '30px', textAlign: 'center'}}>*/}
             <div style={{fontSize: '30px'}}>
                 {/*<TopCars cars={topCars}/>*/}
                 {/* <Bankomat filteredMoney={filteredMoney} filterValue={filterValue}/>*/}
                 {/*<Counter count={count} reset={reset} increment={increment}/>*/}
 
-                <FullInput addMessage={addMessage}/>
+                {/* <FullInput addMessage={addMessage}/>*/}
+
+                <Input title={title} setTitle={setTitle}/>
+                <Button callBack={onClickHandler} name={'+'}/>
 
                 <ul>
                     {messages.map(message => {
